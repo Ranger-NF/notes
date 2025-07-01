@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+
+
+\newlist{qanda}{enumerate}{1}
+\setlist[qanda,1]{label=\textbf{Q\arabic*:}, 
+                  left=0pt, 
+                  itemsep=1em, 
+                  align=left, 
+                  wide=0pt}
+
+\newcommand{\answer}[1]{\\\textbf{A:} #1}
+
+\title{Theory of Computation}
+\author{Mohammed Fahad}
+
+\begin{document}
+
+\maketitle
+
+\section{Why TOC?}
+
+\begin{itemize}
+    \item It helps us to understand the limits of what computer can do and how to model computation using mathematics
+\end{itemize}
+
+\begin{qanda}
+    \item What is the motivation for studying theory behind computation? OR Needs of TOC?
+    \answer{
+        \begin{itemize}
+            \item Understanding the capability of a computer
+            \item To find steps to solve a problem
+            \item Increase efficiency while doing a task
+        \end{itemize}
+    }
+
+    \item List the problems that cannot be solved by a computer.
+    \answer{
+        \begin{enumerate}
+            \item Ethical problems. Eg: Self-driving car deciding to save the driver/passenger or the pedestrian
+        \end{enumerate}
+    }
+
+\end{qanda}
+
+\section{Automaton (pl.: Automata)}
+
+A simplified mathematical model of a machine (digital computer) - It accepts input, produces output, may have some temporary storage and can mae descisions in transforming the input into the output
+
+
+\end{document}
