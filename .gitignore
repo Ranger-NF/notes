@@ -1,0 +1,44 @@
+# LaTeX intermediate files (commonly generated)
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+
+# LaTeX Workshop build cache
+.latexmkrc
+latex.out/
+*.pdfsync
+*.synctex(busy)*
+*.xdv
+
+# VS Code settings folder
+.vscode/
+
+# Mac/Linux hidden files
+.DS_Store
+._*
+
+# Temporary files
+*.bak
+*~
+*.swp
