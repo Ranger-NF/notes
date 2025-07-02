@@ -1,5 +1,25 @@
 \documentclass{article}
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+  language=C,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{green!50!black},
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  tabsize=4,
+  breaklines=true,
+  frame=single,
+  captionpos=b
+}
+
 \title{Data Structures and Algorithms}
 \author{Mohammed Fahad}
 
@@ -33,6 +53,45 @@ of Expressions- Infix to Postfix, Evaluating Postfix Expressions.
     \item \textbf{Time Complexity}
     \item \textbf{Space Complexity}
 \end{enumerate}
+
+\section{Stack}
+It follow FILO (First In Last Out) scheme
+\begin{itemize}
+    \item pop - Removes from top
+    \item push - Adds to top
+    \item peek/top - See topmost element
+\end{itemize}
+
+
+\section{Queue}
+It follow FIFO (First In First Out) scheme
+\begin{itemize}
+    \item pop - Removes from front
+    \item push - Adds to rear
+    \item peek/top - See frontmost element
+\end{itemize}
+
+\section{Addition of sparse polynomial}
+
+All the polynomials are stored inside an array of structures:
+\begin{lstlisting}[caption={Sparse Polynomial Addition Outline}]
+    // Structure to represent a term
+    typedef struct {
+        int coeff;
+        int expo;
+    } Term;
+
+    Term polynomial[] = {{2, 3},{4, 0}} // 2x^3 + 4
+\end{lstlisting}
+
+\subsection{Logic when adding 2 polynomials}
+let it be poly1 (with i as indexing),  poly2 (with j as indexing) \&  result (with k as indexing)
+
+\begin{itemize}
+    \item If poly1[i].exp ==  poly2[j].exp: add coefficients
+    \item If poly1[i].exp is greater than poly2[j].exp: Copy over poly1[i]
+    \item If poly1[i].exp is less than poly2[j].exp: Copy over poly2[j]
+\end{itemize}
 
 
 \end{document}

@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{amsmath}
 
 \title{Digital Electronics And Logic Design}
 \author{Mohammed Fahad}
@@ -7,7 +8,7 @@
 
 \maketitle
 
-\section{Syllabus}
+\section*{Syllabus}
 
 Introduction to digital Systems :- Digital abstraction
 Number Systems – Binary, Hexadecimal, grouping bits, Base conversion;
@@ -18,5 +19,91 @@ OR gate, NOR gate, NAND gate, XOR gate, XNOR gate; Digital circuit,
 operation - logic levels, output dc specifications, input dc specifications,
 noise margins, power supplies; Driving loads - driving other gates, resistive
 loads and LEDs.
+
+\section{Conversion from Decimal to Other Bases}
+
+\subsection{Changing Base of the Whole Number Part}
+
+\[
+(18)_{10} = (?)_2
+\]
+
+We use repeated division by the target base (2 in this case):
+
+\begin{equation}
+\begin{array}{r|l}
+18 & \div 2 \\
+\hline
+9 & \text{remainder } 0 \\
+\div 2 \\
+\hline
+4 & \text{remainder } 1 \\
+\div 2 \\
+\hline
+2 & \text{remainder } 0 \\
+\div 2 \\
+\hline
+1 & \text{remainder } 0 \\
+\div 2 \\
+\hline
+0 & \text{remainder } 1 \\
+\end{array}
+\end{equation}
+
+Now, read the remainders from **bottom to top** to get the binary equivalent:
+
+\[
+(18)_{10} = (10010)_2
+\]
+
+
+\subsection{Changing Base of the Fractional Part}
+
+How do we convert a **fractional decimal** to another base?
+
+\[
+(0.25)_{10} = (?)_2
+\]
+
+We use repeated multiplication of the fractional part by the base (2 in this case):
+
+\begin{align*}
+0.25 \times 2 &= 0.5 \quad \Rightarrow \text{Digit: } 0 \\
+0.5 \times 2  &= 1.0 \quad \Rightarrow \text{Digit: } 1 \ (\text{stop: fraction is now 0})
+\end{align*}
+
+Now write the digits from top to bottom after the binary point:
+
+\[
+(0.25)_{10} = (0.01)_2
+\]
+
+\subsection*{Hexadecimal (Base 16)}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Decimal} & \textbf{Hexadecimal} \\
+\hline
+0  & 0 \\
+1  & 1 \\
+2  & 2 \\
+3  & 3 \\
+4  & 4 \\
+5  & 5 \\
+6  & 6 \\
+7  & 7 \\
+8  & 8 \\
+9  & 9 \\
+10 & A \\
+11 & B \\
+12 & C \\
+13 & D \\
+14 & E \\
+15 & F \\
+\hline
+\end{tabular}
+\end{center}
+
+Just like how 10 comes after 9, 10 comes after FF
 
 \end{document}

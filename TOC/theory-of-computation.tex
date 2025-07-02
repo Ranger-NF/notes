@@ -1,6 +1,8 @@
 \documentclass{article}
 
 \usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
 
 
 \newlist{qanda}{enumerate}{1}
@@ -55,5 +57,64 @@ A simplified mathematical model of a machine (digital computer). It
     \item can make descisions in transforming the input into the output
 \end{itemize}
 
+\begin{qanda}
+    \item Why study computability and theory?
+    \answer{
+        \begin{itemize}
+            \item It helps to answer: "Can this be solved by a computer?"
+            \item Understand the principles behind algorithms and programs
+            \item Explore the boundary between what is possible and impossible in computing
+        \end{itemize}
+    }
+\end{qanda}
+
+\subsection{Need for mathematical modelling}
+\begin{itemize}
+    \item Computers work on rules \& logic
+    \item We can represent computers using abstract models
+    \item These models helps us study complex behaviour in a simplified way
+\end{itemize}
+
+\section{Introduction to finite automata}
+
+\begin{enumerate}
+    \item ON/OFF Switch:
+        \begin{center}
+        \begin{tikzpicture}[shorten >=1pt, node distance=3cm, on grid, auto]
+
+        \node[state, initial] (OFF) {OFF};
+        \node[state, right=of OFF] (ON) {ON};
+
+        \path[->]
+            (OFF) edge[bend left] node {press} (ON)
+            (ON) edge[bend left] node {press} (OFF);
+
+        \end{tikzpicture}
+        \end{center}
+    \item Coffee vending machine (Inputs: Rs. 5 \& Rs. 10 | Rs. 15 for one coffee):
+        \begin{center}
+        \begin{tikzpicture}[shorten >=1pt, node distance=3cm, on grid, auto]
+
+        \node[state, initial] (NONE) {Rs. 0};
+        \node[state, right=of NONE] (FIVE) {Rs. 5};
+        \node[state, right=of FIVE] (TEN) {Rs. 10};
+        \node[state, right=of TEN] (SERVE) {Serve Coffee};
+
+        \path[->]
+            (NONE) edge[bend left] node {Rs. 5} (FIVE)
+            (FIVE) edge[bend left] node {Rs. 5} (TEN)
+            (TEN) edge[bend left] node {Rs. 5} (SERVE)
+            (NONE) edge[bend right] node {Rs. 10} (TEN)
+            (FIVE) edge[bend right] node {Rs. 10} (SERVE);
+        \end{tikzpicture}
+        \end{center}
+
+
+\end{enumerate}
+
+\section{Formal Language}
+A formal language is an abstraction of the general characteristics of programming langauges.
+
+A formal language consists of set of symbols and some rules of formation by which these symbols can be combined into entities called sentences.
 
 \end{document}
