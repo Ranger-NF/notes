@@ -62,6 +62,59 @@ It follow FILO (First In Last Out) scheme
     \item peek/top - See topmost element
 \end{itemize}
 
+\subsection{Implementation of Stack}
+
+\begin{lstlisting}[caption={Implementation of Stack}]
+#include <stdio.h>
+#define MAX 2
+
+int stack[MAX];
+int top = -1;
+
+void push(int a) {
+    if (top + 1 >= MAX) {
+        printf("Stack Overflow\n");
+    } else {
+        stack[++top] = a;
+    }
+}
+
+int pop() {
+    if (top == -1) {
+        printf("Stack underflow \n");
+        return -1;
+    } else {
+        return stack[top--];
+    }
+}
+
+void display() {
+    if (top == -1) {
+        printf("Stack is empty!\n");
+    } else {
+        for (int i = top; i > -1; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    pop();
+
+    push(5);
+    push(8);
+
+    display();
+
+    pop();
+
+    display();
+
+    return 0;
+}
+\end{lstlisting}
+
 
 \section{Queue}
 It follow FIFO (First In First Out) scheme
@@ -69,6 +122,78 @@ It follow FIFO (First In First Out) scheme
     \item pop - Removes from front
     \item push - Adds to rear
     \item peek/top - See frontmost element
+\end{itemize}
+
+\subsection{Implementation of Queue}
+
+\begin{lstlisting}[caption={Implementation of Queue}]
+#include <stdio.h>
+#define MAX 3
+
+int queue[MAX];
+int rear = -1, front = -1;
+
+void enqueue(int a) {
+    if (rear + 1 >= MAX) {
+        printf("Queue Overflow\n");
+    } else {
+        if (front == -1) front = 0;
+        queue[++rear] = a;
+    }
+}
+
+int dequeue() {
+    if (front > rear) {
+        printf("Queue underflow \n");
+        return -1;
+    } else {
+        return queue[front++];
+    }
+}
+
+void display() {
+    if (rear == -1 || front > rear) {
+        printf("Queue is empty!\n");
+    } else {
+        for (int i = rear; i >= front; i--) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    dequeue();
+
+    enqueue(5);
+    enqueue(8);
+
+    display();
+
+    dequeue();
+
+    display();
+
+    enqueue(3);
+
+    display();
+
+    return 0;
+}
+
+\end{lstlisting}
+
+\section{Multi-Stacks}
+2 or more stacks in a single array.
+
+\subsection{2 stacks in one array}
+
+Stack 1 grows from left to right.
+Stack2 grows frome right to left. \textbf{Condition:}
+
+\begin{itemize}
+    \item To push into stack1: \[top1 + 1 < top2\]
+    \item To push into stack2: \[top2 - 1 > top1\]
 \end{itemize}
 
 \section{Addition of sparse polynomial}

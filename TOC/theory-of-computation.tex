@@ -1,6 +1,9 @@
 \documentclass{article}
 
+\setlength{\parindent}{0pt} 
+
 \usepackage{enumitem}
+\usepackage{amsmath}
 \usepackage{tikz}
 \usetikzlibrary{automata, positioning}
 
@@ -109,7 +112,6 @@ A simplified mathematical model of a machine (digital computer). It
         \end{tikzpicture}
         \end{center}
 
-
 \end{enumerate}
 
 \section{Formal Language}
@@ -117,4 +119,74 @@ A formal language is an abstraction of the general characteristics of programmin
 
 A formal language consists of set of symbols and some rules of formation by which these symbols can be combined into entities called sentences.
 
+\section{Central concepts of automata theory}
+
+\subsection{Alphabets}
+It a finite, non-empty set of symbols. Alphabets are represented by '$\Sigma$'.
+
+Binary alphabets can be represented as:
+\[\Sigma = \{0, 1\} \]
+
+Set of lowercase letters:
+\[\Sigma = \{a, b, c, ... , z\} \]
+
+\subsection{Strings}
+A string is a finite seeunce of symbols chosen from some alphabets.
+
+Eg:
+Let $\Sigma = \{0, 1\}$ be the alphabet. \\
+
+Examples of strings in $\Sigma$: 
+\[
+\ 0,\ 1,\ 00,\ 01,\ 10,\ 11,\ 000,\ 010,\ \ldots
+\]
+
+\subsubsection{Length of a string}
+The number of occurances of symbols in the string.
+
+\begin{align*}
+\text{Length one:} \quad & 0,\ 1 \\
+\text{Length two:} \quad & 00,\ 01,\ 10,\ 11
+\end{align*}
+
+The std. notation for length of a string $w$ is $\|w\|$
+
+\subsubsection{Empty string ($\varepsilon$)}
+A string with zero occurances OR string with length '0'
+
+\subsubsection{$\Sigma^*$}
+Set of all strings over an alphabet
+
+\subsubsection{$\Sigma^+$}
+Set of all strings excluding empty string over an alphabet
+\[\Sigma^* = \Sigma^0 \cup \Sigma^+\]
+
+\subsection{Powers of an alphabet}
+If $\Sigma$ is an alphabet, $\Sigma^k$ is the set of strings with length 'k', each of whose symbols is in '$\Sigma$'.
+
+\begin{align*}
+    \Sigma^3 &= \{000,\ 001,\ 010,\ 011,\ 100,\ 101,\ 110,\ 111\} \\
+    \Sigma^0 &= \{ \varepsilon \}
+\end{align*}
+
+NOTE: $\Sigma \neq \Sigma^1$, Their definitions differentiates them.
+
+\section{Concatenation of strings}
+Let $x$ and $y$ be strings, then $xy$ means combining both $x$ and $y$.
+
+\begin{align*}
+    &\text{i.e., if } x = 01010 \text{ and } y = 110, \\
+    &xy = 01010110
+\end{align*}
+
+\begin{align*}
+    &|x|=m \text{ and } |y| = n, \\
+    &|xy| = m + n
+\end{align*}
+
+For any string $w$, then the equation,
+
+\[ \varepsilon w = w \varepsilon = w \]
+
+ie, $\varepsilon$ is the identity of Concatenation
 \end{document}
