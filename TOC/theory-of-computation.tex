@@ -4,6 +4,7 @@
 
 \usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{tikz}
 \usetikzlibrary{automata, positioning}
 
@@ -189,4 +190,98 @@ For any string $w$, then the equation,
 \[ \varepsilon w = w \varepsilon = w \]
 
 ie, $\varepsilon$ is the identity of Concatenation
+
+\section{Languages}
+A set of strings all of which are chosen from $\Sigma^*$. If $\Sigma$ is an alphabet, then $L \subset \Sigma^*$. Eg:
+
+\begin{enumerate}
+    \item Set of all strings consisting of $n$ 0s followed by $n$ 1s, $n \geq 0$
+    \[
+    L=\{\varepsilon, 01, 0011, 000111, ...\}
+    \]
+    \item Set of all strings having equal number of 0s and 1s,
+    \[
+    L=\{\varepsilon, 01, 0011, 0101, ...\}
+    \]
+\end{enumerate}
+
+NB: $\Sigma^*$ is a language for any alphabet, $\Sigma$
+\begin{align*}
+    L = \{\} &\rightarrow \text{Empty language, } \varnothing \\
+    L = \{\varepsilon\} &\rightarrow \text{Language containing the empty string}
+\end{align*}
+
+There are 2 types of Languages:
+\begin{enumerate}
+    \item \textbf{Infinte languages}. Eg: $\{0, 01, 001, 0001, 00001, ...\}$
+    \item \textbf{Finte langauges}. Eg: $\{\varepsilon, a, b, ab, ba\}$
+\end{enumerate}
+
+\section{Set-formers as a way to define language}
+\begin{equation*}
+    \{w | w \text{ consists of equal number of 0s and 1st}\}
+\end{equation*}
+
+\section{Problems}
+Problem is the question of deciding whether a given string is a member of some particular language.
+
+\section{Automata}
+An automaton is an abstract model of a digital computer.
+
+\subsection{Key components of automata}
+\begin{enumerate}
+    \item Input file
+    \item Control Ubit
+    \item storage
+    \item Output
+\end{enumerate}
+
+\subsection{Types of automata}
+\begin{enumerate}
+    \item Deterministic (DFA): One move per configuration (Predictable)
+    \item Nondeterministic (NFA): Multiple possible moves
+\end{enumerate}
+
+Then there is automata like:
+\begin{itemize}
+
+    \item \textbf{Acceptor:} Says “yes” or “no” for an input.
+
+    This simple automaton accepts the string `a`:
+    \begin{center}
+    \begin{tikzpicture}[
+      shorten >=1pt,
+      node distance=2.5cm,
+      on grid,
+      auto
+    ]
+        \node[state, initial] (OFF) {$q_0$};
+        \node[state, accepting, right=of OFF] (ON) {$q_1$};
+
+        \path[->]
+            (OFF) edge node {a} (ON);
+    \end{tikzpicture}
+    \end{center}
+
+    \item \textbf{Transducer:} Produces an output string based on input.
+
+    \begin{center}
+        \begin{tikzpicture}[
+        shorten >=1pt,
+        node distance=2cm,
+        on grid,
+        auto
+        ]
+            \node[state, initial] (ONE) {$q_0$};
+            \node[state, above right=of ONE] (TWO) {$q_1$};
+            \node[state, below right=of ONE] (THREE) {$q_2$};
+
+            \path[->]
+                (ONE) edge node {a} (TWO)
+                (ONE) edge node {a} (THREE);
+        \end{tikzpicture}
+    \end{center}
+
+\end{itemize}
+
 \end{document}
