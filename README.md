@@ -13,13 +13,13 @@ Each subject folder contains:
 ---
 
 ## 📁 Structure
-
+```
 ├── DELD/ → Digital Electronics and Logic Design
 ├── DS/ → Data Structures
 ├── TOC/ → Theory of Computation
 ├── latexsheet.pdf → General reference sheet
 └── .gitignore
-
+```
 
 ---
 
