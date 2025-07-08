@@ -1,0 +1,76 @@
+\documentclass{article}
+
+\setlength{\parindent}{0pt} 
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\newlist{qanda}{enumerate}{1}
+\setlist[qanda,1]{label=\textbf{Q\arabic*:}, 
+                  left=0pt, 
+                  itemsep=1em, 
+                  align=left, 
+                  wide=0pt}
+
+\newcommand{\answer}[1]{\\\textbf{A:} #1}
+
+\title{Mathematics for Information Science - 3}
+\author{Mohammed Fahad}
+
+\begin{document}
+
+\maketitle
+
+\section{Experiment \& Subspace}
+An experiment is any activity or process whose outcomes are subject to uncertainty.
+
+Sample space denoted by $S$ is the set of all outcomes of that experiment.
+
+\section{Random Variable}
+A random variable is a function whose domain is the sample space, $S$ and whose range is the set if real number $R$.
+
+Random variable, 
+\[
+rv: S \rightarrow R
+\]
+
+There are 2 types of random variables:
+\begin{enumerate}
+    \item Discrete random variable: Whose values constitute a countable set
+    \item Continous random variable
+\end{enumerate}
+
+\section{Propability distribution/Propability Mass Function (PMF)}
+PMF of a discrete random variable is defined for every number, $x$ by:
+\[
+p(x) = p(X = x)
+\]
+Satisfying the following conditions:
+\begin{enumerate}
+    \item \( p(x) \geq 0 \)
+    \item \( \sum p(x) = 1 \)
+\end{enumerate}
+
+NB: Propability can never be $>$ 1
+
+
+\textbf{Q.} Check whether the following are PMF
+\begin{align*}
+    P(x) = \frac{x^2}{25}; x = 0, 1, 2, 3, 4
+\end{align*}
+
+\textbf{A.} 
+\begin{align*}
+    P(0) = \frac{0^2}{25} = 0 \\
+    P(1) = 1/25 \\
+    P(2) = 4/25 \\
+    P(3) = 9/25 \\
+    P(4) = 16/25 \\
+    P(0) + P(1) + P(2) + P(3) + P(4) = \frac{30}{25} \neq 1 
+\end{align*}
+
+Therefore, $P(x)$ can't be a PMF
+
+\end{document}

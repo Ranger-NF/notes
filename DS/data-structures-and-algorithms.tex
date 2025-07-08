@@ -2,6 +2,7 @@
 
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{amsmath}
 
 \lstset{
   language=C,
@@ -19,6 +20,8 @@
   frame=single,
   captionpos=b
 }
+
+\setlength{\parindent}{0pt} 
 
 \title{Data Structures and Algorithms}
 \author{Mohammed Fahad}
@@ -161,26 +164,6 @@ void display() {
         printf("\n");
     }
 }
-
-int main() {
-    dequeue();
-
-    enqueue(5);
-    enqueue(8);
-
-    display();
-
-    dequeue();
-
-    display();
-
-    enqueue(3);
-
-    display();
-
-    return 0;
-}
-
 \end{lstlisting}
 
 \section{Multi-Stacks}
@@ -219,6 +202,68 @@ let it be poly1 (with i as indexing),  poly2 (with j as indexing) \&  result (wi
 \end{itemize}
 
 \section{Sparse Matrix}
+Sparse matrix is a matrix with most of its elements are zero. Eg:
+\[
+\begin{matrix}
+15 & 0  & 0  & 0  & 91 & 0  \\
+0  & 11 & 0  & 0  & 0  & 0  \\
+0  & 3  & 0  & 0  & 0  & 28 \\
+22 & 0  & -6 & 0  & 0  & 0  \\
+0  & 0  & 0  & 0  & 0  & 0  \\
+-15& 0  & 0  & 0  & 0  & 0  \\
+\end{matrix}
+\]
 
+\subsection{Finding transpose of sparse matrix}
 
+We use an array of structs to save values of non-zero values of matrix.
+\begin{lstlisting}[caption={Representing sparse matrix}]
+    typedef struct {
+        int row;
+        int col;
+        int value;
+    } Term;
+\end{lstlisting}
+
+The first row of the array would be the \textbf{metadata} of the matrix: Number of rows, Number of columns and number of non-zero elements.
+
+One such array for representation might look like this:
+\begin{lstlisting}
+Term a[] = {
+    {6, 6, 8}, // metadata: 6 rows, 6 cols, 8 non-zero values
+    {0, 0, 15},
+    {3, 0, 22},
+    {5, 0, -15},
+    {1, 1, 11},
+    {2, 1, 3},
+    {3, 2, -6},
+    {0, 4, 91},
+    {2, 5, 28}
+};
+\end{lstlisting}
+
+\subsubsection{Program for transpose}
+\begin{lstlisting} [caption=Finding the transpose of a sparse matrix]
+void transpose(Term a[], Term b[]) {
+    int n = a[0].value;
+
+    b[0].row = a[0].col;
+    b[0].col = a[0].row;
+    b[0].value = n;
+
+    if (n > 0) {
+        int indexb = 1; // To keep track of values in b
+        for (int i = 0; i < a[0].col; i++) { // For sorting
+            for (int j = 1; j <= n; j++) { // For iteration
+                if (a[j].col == i) {
+                    b[indexb].row = a[j].col;
+                    b[indexb].col = a[j].row;
+                    b[indexb].value = a[j].value;
+                    indexb++;
+                }
+            }
+        }
+    }
+}
+\end{lstlisting}
 \end{document}
