@@ -5,6 +5,7 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{qtree}
 \usepackage{tikz}
 \usetikzlibrary{automata, positioning}
 
@@ -283,5 +284,45 @@ Then there is automata like:
     \end{center}
 
 \end{itemize}
+
+\subsection{Automata Overview}
+
+\Tree [.Regular\ Language
+  [.Regular\ Grammer ]
+  [.Regular\ Expression ]
+  [.Finite\ Automata
+    [.Acceptor 
+      [.DFA ] 
+      [.NFA 
+        [.Epsilon-DFA ]
+      ]
+    ] 
+    [.Transducer 
+      [.Moore ] 
+      [.Mealy ]
+    ]
+  ]
+]
+
+The mathematical representation of Regular Language (RL) is callled Finite Automata (FA)
+
+\section{Deterministic Finite Automata (DFA)}
+
+DFA is defined by a quintuple:
+\[
+M = (Q, \Sigma, \delta, q_0, F)
+\]
+
+$Q$ - Finite set of internal states
+
+$\Sigma$ - Input alphabets
+
+$\delta$ - Transition function, $\delta : Q \ \Sigma \rightarrow Q$
+
+$q_0$ - initial state [ $q_0 \varepsilon Q$ ]
+
+$F$ - Final states [ $F \subset Q$ ]
+
+
 
 \end{document}
