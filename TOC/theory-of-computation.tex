@@ -323,6 +323,104 @@ $q_0$ - initial state [ $q_0 \varepsilon Q$ ]
 
 $F$ - Final states [ $F \subset Q$ ]
 
+\subsection{DFA problems}
 
+\begin{qanda}
+    \item Draw DFA for $\Sigma = \{a\}$ and $L = \{a, aaa, aaaaa\}$
+    \answer{
+        \begin{center}
+            \begin{tikzpicture}[
+            shorten >=1pt,
+            node distance=2cm,
+            on grid,
+            auto
+            ]
+                \node[state, initial] (FIRST) {$q_0$};
+                \node[state, accepting, right of=FIRST] (SECOND) {$q_1$};
+                \node[state, right of=SECOND] (THIRD) {$q_2$};
+                \node[state, accepting,right of=THIRD] (FOURTH) {$q_3$};
+                \node[state, right of=FOURTH] (FIFTH) {$q_4$};
+                \node[state, accepting, right of=FIFTH] (SIXTH) {$q_5$};
+                \node[state, right of=SIXTH] (SEVENTH) {$q_6$};
+
+
+            \path[->]
+                (FIRST) edge node {a} (SECOND)
+                (SECOND) edge node {a} (THIRD)
+                (THIRD) edge node {a} (FOURTH)
+                (FOURTH) edge node {a} (FIFTH)
+                (FIFTH) edge node {a} (SIXTH)
+                (SIXTH) edge node {a} (SEVENTH)
+                (SEVENTH) edge[loop right] node {a} (SEVENTH);
+                
+            \end{tikzpicture}
+        \end{center}
+    }
+
+    \item Draw DFA for $\Sigma = \{a, b\}$ and $L = \{aa, ab, ba, bb\}$
+    \answer{
+        \begin{center}
+            \begin{tikzpicture}[
+                shorten >=1pt,
+                node distance=2.5cm,
+                on grid,
+                auto
+                ]
+                \node[state, initial] (FIRST) {$q_0$};
+                \node[state, right of=FIRST] (SECOND) {$q_1$};
+                \node[state,  accepting, right of=SECOND] (THIRD) {$q_2$};
+                \node[state, right of=THIRD] (FOURTH) {$q_3$};
+
+                \path[->]
+                    (FIRST) edge node {a, b} (SECOND)
+                    (SECOND) edge node {a, b} (THIRD)
+                    (THIRD) edge node {a, b} (FOURTH)
+                    (FOURTH) edge[loop right] node {a, b} (FOURTH);
+
+            \end{tikzpicture}
+    
+        \end{center}
+    }
+
+        \item Draw DFA for $\Sigma = \{a, b\}$ and $L = \{aaa, bab, abb, bb\}$
+        \answer{
+            \begin{center}
+                \begin{tikzpicture}[
+                shorten >=1pt,
+                node distance=2cm,
+                on grid,
+                auto
+                ]
+                \node[state, initial] (q0) {$q_0$};
+                \node[state] (q1) [right=of q0] {$q_1$};
+                \node[state] (q2) [below=of q0] {$q_2$};
+                \node[state] (q3) [right=of q1] {$q_3$};
+                \node[state, accepting] (q4) [right=of q3] {$q_4$}; % aaa
+                \node[state] (q5) [right of=q2] {$q_5$};
+                \node[state, accepting] (q6) [right of=q5] {$q_6$};
+                \node[state] (q7) [below right of=q1] {$q_7$};
+                \node[state, accepting] (q8) [below of=q2] {$q_8$};
+                \node[state] (q9) [below right of=q6] {$q_9$};
+                
+                \path[->]
+                    (q0) edge node {a} (q1)
+                        edge node {b} (q2)
+                    (q1) edge node {a} (q3)
+                    (q1) edge node {b} (q7)
+                    (q7) edge node {b} (q6)
+                    (q3) edge node {a} (q4)
+                    (q2) edge node {b} (q8)
+                    (q2) edge node {a} (q5)
+                    (q5) edge node {b} (q6)
+                    (q8) edge node {a, b} (q9)
+                    (q6) edge node {a, b} (q9)
+                    (q4) edge node {a, b} (q9)
+                    (q5) edge node {a} (q9)
+                    (q3) edge node {b} (q9)
+                    (q9) edge[loop right] node {a, b} (q9);
+                \end{tikzpicture}
+            \end{center}
+    }
+\end{qanda}
 
 \end{document}
